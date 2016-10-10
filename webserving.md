@@ -7,10 +7,25 @@ We take the Web-serving benchmark from CloudSuite (http://cloudsuite.ch/webservi
 ### Build docker image for the Web server
 
 In the original the Web-server docker image from Cloudsuite, the functionality of “email verification for new user registration” is not enabled, which makes it less realistic and practical. Therefore, we need make some modifications and re-build the docker image for the Web server. You can also skip this step and pull the pre-built docker image from Docker Hub (wangcheng86/wangcheng86:web_mail_enabled).
+
 Step I: 
 Download the original installation files from https://github.com/ParsaLab/cloudsuite/tree/master/benchmarks/web-serving/web_server
+
 Step II:
 In Dockerfile, add “Run apt-get install –y sendmail” and “EXPOSE 25”
+
 Step III:
 Replace “bootstrap.sh” with the following:
-
+'''
+#!/bin/bash
+hname=$(hostname)
+line=$(cat /etc/hosts | grep '127.0.0.1')
+line2=" web_server web_server.localdomain"
+sed -i "/\b\(127.0.0.1\)\b/d" /etc/hosts
+echo "$line $line2  $hname" >> /etc/hosts
+cat /etc/hosts
+service sendmail stop
+service sendmail start
+service php5-fpm restart
+service nginx restart
+'''
