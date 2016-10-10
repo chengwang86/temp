@@ -87,6 +87,6 @@ Next on the machine from which you want to open your Web browser, add “VCH_IP 
 
 You can login in as the admin user (username: admin; password: admin1234), or register as a new user with a valid email address (Gmail does not work). You can also create your own contents, invite friends, or chat with others. Enjoy! 
 
-Note that in this example, all the user data and contents are stored on the mysql_server container, which would be gone after you restart the mysql_server. With a later version of vSphere Integrated Container Engine, we will improve this example and allow attaching disk volume to the mysql_server container and persist your data to the volume. 
+
 
 
