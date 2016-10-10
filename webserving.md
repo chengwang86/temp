@@ -30,14 +30,14 @@ service sendmail start
 service php5-fpm restart
 service nginx restart
 ```
-Step IV:
+Step IV: (In this example, we will deploy the image to the docker hub.)
 -	Build the image: 
 ```
 $> docker build  -t repo/directory:tag. 
 ```
--	Login to your registry: (input your credentials when needed)
+-	Login to your registry: 
 ```
-$> docker login 
+$> docker login (input your credentials when needed)
 ```
 -	upload your image: 
 ```
