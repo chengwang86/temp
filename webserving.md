@@ -35,7 +35,6 @@ Step IV:
 ```
 $> docker build  -t repo/directory:tag. 
 ```
-(“repo/directory” could be your private image registry or the public docker hub registry, e.g., wangcheng86/wangcheng86:web_mail_enabled for the pre-built image used in this example)
 -	Login to your registry: (input your credentials when needed)
 ```
 $> docker login 
@@ -54,7 +53,7 @@ networks:
      
 services:
    web_server:
-     image: wangcheng86/wangcheng86:web_mail_enabled
+     image: victest/web_elgg
      #image: your_own_image_built_before
      container_name: web_server    
      networks:
