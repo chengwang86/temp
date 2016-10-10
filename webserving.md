@@ -1,12 +1,12 @@
-# Web-serving on vIC
+# Web-serving on vSphere Integrated Container Engine
 
-We take the Web-serving benchmark from CloudSuite (http://cloudsuite.ch/webserving/) as an example, to demonstrate how customers who are interested in the LEMP implementation of a cloud native web-serving application could use our guidelines to deploy the system on vIC 0.7.0 with Docker Compose. This demo has three tiers deployed on three containerVMs: an Nginx Web server, a Memcached server, and a Mysql database server. The Web server runs Elgg (a social networking engine) and connects the Memcached server and the database server through network.
+We take the Web-serving benchmark from CloudSuite (http://cloudsuite.ch/webserving/) as an example, to demonstrate how customers who are interested in the LEMP implementation of a cloud native web-serving application could use our guidelines to deploy the system on vSphere Integrated Container Engine 0.7.0 with Docker Compose. This demo has three tiers deployed on three containerVMs: an Nginx Web server, a Memcached server, and a Mysql database server. The Web server runs Elgg (a social networking engine) and connects the Memcached server and the database server through network.
 
 ## Workflow
 
 ### Build docker image for the Web server (on regular docker)
 
-In the original the Web-server docker image from Cloudsuite, the functionality of “email verification for new user registration” is not enabled, which makes it less realistic and practical. Therefore, we need make some modifications and re-build the docker image for the Web server. **You can also skip this section and proceed to "Compose File for vIC" if you do not want to build your own image**.
+In the original the Web-server docker image from Cloudsuite, the functionality of “email verification for new user registration” is not enabled, which makes it less realistic and practical. Therefore, we need make some modifications and re-build the docker image for the Web server. **You can also skip this section and proceed to "Compose File for vSphere Integrated Container Engine" if you do not want to build your own image**.
 
 Step I: 
 Download the original installation files from https://github.com/ParsaLab/cloudsuite/tree/master/benchmarks/web-serving/web_server
@@ -44,7 +44,7 @@ $> docker login
 $> docker push repo/directory:tag
 ```
 
-### Compose File for vIC
+### Compose File for vSphere Integrated Container Engine
 ```
 version: '2'
 networks:
@@ -87,6 +87,6 @@ Next on the machine from which you want to open your Web browser, add “VCH_IP 
 
 You can login in as the admin user (username: admin; password: admin1234), or register as a new user with a valid email address (Gmail does not work). You can also create your own contents, invite friends, or chat with others. Enjoy! 
 
-Note that in this example, all the user data and contents are stored on the mysql_server container, which would be gone after you restart the mysql_server. With a later version of vIC, we will improve this example and allow attaching disk volume to the mysql_server container and persist your data to the volume. 
+Note that in this example, all the user data and contents are stored on the mysql_server container, which would be gone after you restart the mysql_server. With a later version of vSphere Integrated Container Engine, we will improve this example and allow attaching disk volume to the mysql_server container and persist your data to the volume. 
 
 
