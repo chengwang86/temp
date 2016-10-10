@@ -6,7 +6,7 @@ We take the Web-serving benchmark from CloudSuite (http://cloudsuite.ch/webservi
 
 ### Build docker image for the Web server (on regular docker)
 
-In the original the Web-server docker image from Cloudsuite, the functionality of “email verification for new user registration” is not enabled, which makes it less realistic and practical. Therefore, we need make some modifications and re-build the docker image for the Web server. **You can also skip this step and proceed to "Compose File for vIC" if you do not want to build your own image**.
+In the original the Web-server docker image from Cloudsuite, the functionality of “email verification for new user registration” is not enabled, which makes it less realistic and practical. Therefore, we need make some modifications and re-build the docker image for the Web server. **You can also skip this section and proceed to "Compose File for vIC" if you do not want to build your own image**.
 
 Step I: 
 Download the original installation files from https://github.com/ParsaLab/cloudsuite/tree/master/benchmarks/web-serving/web_server
