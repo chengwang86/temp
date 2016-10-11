@@ -47,26 +47,32 @@ $> docker push repo/directory:tag
 ### Compose File for vSphere Integrated Container Engine
 ```
 version: '2'
+
 networks:
-   my_net:
-     driver: bridge
-     
+  my_net:
+    driver: bridge
+
 services:
-   web_server:
-     image: victest/web_elgg
-     #image: your_own_image_built_before
-     container_name: web_server    
-     networks:
+  web_server:
+    #image: your_own_web_image
+    image: victest/web_elgg
+    container_name: web_server
+    networks:
        - my_net
-     ports:
-       - "8080:8080"
-       - "25:25"
-       
-   mysql_server:
-     image: cloudsuite/web-serving:db_server
-     container_name: mysql_server
-     networks:
+    ports:
+      - "8080:8080"
+      - "25:25"
+
+  mysql_server:
+    #image: your_own_db_image
+    image: victest/web_db
+    container_name: mysql_server
+    command: [bash, -c, "/execute.sh"]
+    networks:
        - my_net
+    environment:
+       - web_host=192.168.60.130 # This is the VCH_IP
+       - root_password=root  # password for the root user
        
    memcache_server:
      image: cloudsuite/web-serving:memcached_server
